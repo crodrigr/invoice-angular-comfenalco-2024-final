@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Invoice } from '../../models/invoice';
 import {InvoiceService} from '../../services/invoice.service';
-import {InvoiceViewComponent} from '../invoice-view/invoice-view.component';
-import {ClientViewComponent}  from '../client-view/client-view.component';
-import {ListItemsComponent} from '../list-items/list-items.component';
-import {TotalComponent} from '../total/total.component';
-import {FormItemComponent} from '../form-item/form-item.component';
+import {InvoiceViewComponent} from './invoice-view/invoice-view.component';
+import {ClientViewComponent}  from  './client-view/client-view.component';
+import {ListItemsComponent} from './list-items/list-items.component';
+import {TotalComponent} from './total/total.component';
+import {FormItemComponent} from './form-item/form-item.component';
 import { Item } from '../../models/item';
 
 @Component({
