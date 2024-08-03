@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ClientService} from '../../services/client.service';
 import { Client } from '../../models/client';
 import { CommonModule } from '@angular/common';
+import { Route, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-client',
@@ -26,11 +27,13 @@ export class ClientComponent implements OnInit{
      this.clientService.getClients().subscribe({
         next:(response)=>{
           this.clients=response;
-          console.log("Clients fetched successfully!");
         },
         complete:()=>{
            console.log("Completado el getclientes");
            console.log(this.clients);
+           for(let client  in this.clients){
+             console.log("cliente:"+client);
+           }
         },
         error:(err)=>{
           console.log("Error feching clients",err);

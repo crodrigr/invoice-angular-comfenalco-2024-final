@@ -1,0 +1,108 @@
+<div class="card">
+    <div class="card-content">
+        <div class="card-header">
+            <h5 class="card-title">Formulario para {{(client.id>0)? 'Actulizar':'Crear'}} el cliente</h5>
+        </div>
+        <div class="card-body">
+
+           <form (ngSubmit)="onSubmit(clientForm)" #clientForm="ngForm">
+
+            <div>
+               <input placeholder="Nombre" name="nombre" [(ngModel)]="client.nombre" class="form-control my-2"  required #nombre="ngModel">
+               @if(nombre.invalid && (nombre.dirty || nombre.touched)){
+                 @if(nombre.errors!['required']){
+                   <div class="text-danger">
+                      Nombre es requerido
+                   </div> 
+                 }
+               }               
+            </div>
+            <div>
+                <input placeholder="Apellido" name="apellido" [(ngModel)]="client.apellido" class="form-control my-2"  required #apellido="ngModel">
+                @if(apellido.invalid && (apellido.dirty || apellido.touched)){
+                  @if(apellido.errors!['required']){
+                    <div class="text-danger">
+                       Apellido es requerido
+                    </div> 
+                  }
+                }               
+             </div>
+             <div>
+                <input placeholder="Email" name="email" [(ngModel)]="client.email" class="form-control my-2" type="email"  required email #email="ngModel">
+                @if(email.invalid && (email.dirty || email.touched)){
+                  @if(email.errors!['required']){
+                    <div class="text-danger">
+                        El email es requerido
+                    </div> 
+                  }
+                  @if(email.errors!['email']){
+                    <div class="text-danger">
+                        El email no tiene el formato requerido
+                    </div> 
+                  }
+                }               
+             </div>
+             <div>
+                <input placeholder="Dirección" name="direccion" [(ngModel)]="client.direccion" class="form-control my-2"  required 
+                minlength="6" #direccion="ngModel">
+                @if(direccion.invalid && (direccion.dirty || direccion.touched)){
+                  @if(direccion.errors!['required']){
+                    <div class="text-danger">
+                        La dirección es requerida
+                    </div> 
+                  }
+                  @if(direccion.errors!['minlength']){
+                    <div class="text-danger">
+                        La dirección debe tener al menos 6 caracteres!
+                    </div> 
+                  }
+                }               
+             </div>
+             <div>
+                <input placeholder="Celular" name="celular" [(ngModel)]="client.celular" class="form-control my-2"  required 
+                minlength="6" #celular="ngModel">
+                @if(celular.invalid && (celular.dirty || celular.touched)){
+                  @if(celular.errors!['required']){
+                    <div class="text-danger">
+                        La celular es requerida
+                    </div> 
+                  }
+                  @if(celular.errors!['minlength']){
+                    <div class="text-danger">
+                        La celular debe tener al menos 6 caracteres!
+                    </div> 
+                  }
+                }               
+             </div>
+             <div>                                                                               
+                <input placeholder="Fecha nacimiento" name="fechaNacimiento" [(ngModel)]="client.fechaNacimiento" class="form-control my-2"  required 
+                minlength="6" #fechaNacimiento="ngModel">
+                @if(fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched)){
+                  @if(fechaNacimiento.errors!['required']){
+                    <div class="text-danger">
+                        La fecha de nacimiento es requerida
+                    </div> 
+                  }
+                  @if(fechaNacimiento.errors!['minlength']){
+                    <div class="text-danger">
+                        La fecha de nacimiento debe tener al menos 6 caracteres!
+                    </div> 
+                  }
+                }               
+             </div>
+             
+             <button type="submit" class="btn btn-primary m-2" [disabled]="clientForm.invalid">
+                {{ client.id> 0? 'Actualizar': 'Crear'}}
+             </button>
+
+             <button type="button" class="btn btn-primary m-2" (click)="onClear(clientForm)">
+                Limpiar
+             </button>
+
+           </form>
+
+
+
+        </div>
+    </div>
+</div>
