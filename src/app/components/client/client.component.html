@@ -1,7 +1,8 @@
 <div class="card border-primary mb3">
     <div class="card-header">Clientes</div>
     <div class="card-body text-primary">
-       <h5 class="card-title">Listado de clientes</h5>
+       <h5 class="card-title">Listado de clientes</h5>                                                     
+       <button type="button" class="btn btn-primary" [routerLink]="['/client/create']">Crear Cliente</button>
       <div class="my-2 text-left">       
       </div>
       @if(clients.length==0){
@@ -11,30 +12,26 @@
       }
       <table class="table table-border table-hover text-primary">
         <thead>
-           <tr>
-              <th></th>
+           <tr>             
               <th>#</th>
               <th>Nombre</th>
               <th>Apellido</th>
               <th>Email</th>
-              <th>Fecha</th>
-              <th>Crear factura</th>
+              <th>Fecha</th>              
               <th>Actualizar</th>
               <th>Eliminar</th>
            </tr>
         </thead>
         <tbody>
             @for(cliente of clients; track $index){      
-            <tr>
-            <td><button type="button" class="btn btn-info" >Ver</button></td>
+            <tr>            
             <td>{{cliente.id}}</td>
             <td>{{cliente.nombre}}</td>
             <td>{{cliente.apellido}}</td>
             <td>{{cliente.email}}</td>
-            <td>{{cliente.fechaNacimiento | date:'dd/MM/yyyy'}}</td>
-            <td><button type="button" class="btn btn-secondary"  >Crear factura</button></td>
-            <td><button type="button" class="btn btn-success"  >Actualizar</button></td>
-            <td><button type="button" class="btn btn-danger" >Eliminar</button></td>
+            <td>{{cliente.fechaNacimiento | date:'dd/MM/yyyy'}}</td>           
+            <td><button type="button" class="btn btn-success" [routerLink]="['/client/update',cliente.id]" >Actualizar</button></td>
+            <td><button type="button" class="btn btn-danger" (click)="removeCliente(cliente)" >Eliminar</button></td>
            </tr>
            }
         </tbody>
